@@ -1,0 +1,102 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Database Best Practices for Local Business Platform
+
+## Schema Design
+- Use proper normalization for business data
+- Implement appropriate indexes for search performance
+- Use composite indexes for location-based queries
+- Design for scalability from the start
+- Use proper foreign key constraints
+- Implement soft deletes for business records
+
+## Prisma Patterns
+- Use proper Prisma schema organization
+- Implement cascading deletes appropriately
+- Use proper field validation in schema
+- Leverage Prisma's type generation
+- Use transactions for complex operations
+- Implement proper migration strategies
+
+## Business Data Modeling
+- Model business profiles with proper validation
+- Store location data with geographic indexes
+- Implement category and tag relationships
+- Design review and rating schemas efficiently
+- Model business hours with timezone support
+- Store contact information securely
+
+## Performance Optimization
+- Use proper indexing for search queries
+- Implement database connection pooling
+- Use query optimization for location searches
+- Cache frequent queries appropriately
+- Use pagination for large result sets
+- Monitor and optimize slow queries
+
+## Location and Geographic Data
+- Use proper data types for coordinates
+- Implement geospatial indexing
+- Optimize radius-based searches
+- Handle timezone data correctly
+- Store address data in normalized format
+- Implement proper validation for geographic data
+
+## Search and Filtering
+- Index business names for text search
+- Implement category-based filtering
+- Use full-text search for descriptions
+- Optimize multi-criteria searches
+- Implement proper sorting mechanisms
+- Cache popular search results
+
+## Data Integrity
+- Use proper constraints for business rules
+- Implement data validation at database level
+- Use transactions for related operations
+- Implement proper error handling
+- Validate business data before insertion
+- Maintain referential integrity
+
+## Migration Management
+- Use descriptive migration names
+- Test migrations on staging data
+- Implement rollback procedures
+- Document breaking schema changes
+- Version migrations properly
+- Backup data before major migrations
+
+## Security
+- Implement proper access controls
+- Use parameterized queries to prevent injection
+- Encrypt sensitive business information
+- Implement audit trails for important changes
+- Use proper authentication for database access
+- Monitor for suspicious activity
+
+## Local Business Specific Features
+- Design efficient business search algorithms
+- Implement proper categorization systems
+- Store business verification status
+- Model business relationships and partnerships
+- Handle business profile updates efficiently
+- Implement business discovery features
+
+## Testing
+- Write tests for database operations
+- Use test fixtures for business data
+- Test migration scripts thoroughly
+- Test database constraints properly
+- Implement integration tests for complex queries
+- Test performance with realistic data volumes
+
+## Monitoring and Maintenance
+- Monitor database performance metrics
+- Implement proper logging for database operations
+- Set up alerts for slow queries
+- Regular database maintenance tasks
+- Monitor storage usage and growth
+- Implement proper backup strategies

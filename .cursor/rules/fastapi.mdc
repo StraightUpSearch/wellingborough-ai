@@ -1,0 +1,102 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# FastAPI Best Practices for AI Services
+
+## Project Structure
+- Organize routes in separate modules by feature
+- Use dependency injection for shared services
+- Implement proper middleware stack
+- Use proper configuration management
+- Organize models in dedicated modules
+- Separate business logic from route handlers
+
+## API Design
+- Use proper HTTP status codes
+- Implement consistent response formats
+- Use Pydantic models for request/response validation
+- Implement proper error handling with HTTPException
+- Use proper HTTP methods (GET, POST, PUT, DELETE)
+- Implement proper API versioning
+
+## Data Validation
+- Use Pydantic models for all data validation
+- Implement custom validators when needed
+- Use proper field validation with constraints
+- Validate file uploads properly
+- Implement proper data serialization
+- Use proper type hints throughout
+
+## Authentication & Authorization
+- Implement JWT token authentication
+- Use proper password hashing (bcrypt)
+- Implement role-based access control
+- Secure API endpoints appropriately
+- Use proper CORS configuration
+- Implement rate limiting for API endpoints
+
+## AI Integration Patterns
+- Use dependency injection for AI models
+- Implement proper error handling for AI operations
+- Use background tasks for long-running AI processes
+- Implement proper caching for AI results
+- Use proper timeout handling for AI requests
+- Implement proper logging for AI operations
+
+## Business Content Generation
+- Validate business data before AI processing
+- Implement proper content templates
+- Use structured prompts for consistent results
+- Implement content quality checks
+- Cache generated content appropriately
+- Implement content versioning
+
+## Database Integration
+- Use async database operations
+- Implement proper connection pooling
+- Use database migrations properly
+- Implement proper error handling for DB operations
+- Use proper indexing for performance
+- Implement proper transaction management
+
+## Performance Optimization
+- Use async/await properly throughout
+- Implement proper caching strategies
+- Use background tasks for heavy operations
+- Implement proper database query optimization
+- Use proper connection pooling
+- Monitor and optimize response times
+
+## Error Handling
+- Implement global exception handlers
+- Use proper logging for errors
+- Return user-friendly error messages
+- Implement proper validation error responses
+- Handle AI service failures gracefully
+- Implement proper monitoring and alerting
+
+## Local Business Platform Features
+- Implement business profile validation
+- Handle location data processing
+- Implement search functionality
+- Process business categories properly
+- Handle image processing for business profiles
+- Implement review and rating systems
+
+## Testing
+- Write unit tests for all business logic
+- Implement integration tests for API endpoints
+- Test AI integration points
+- Use proper test fixtures
+- Test error scenarios thoroughly
+- Implement proper test data management
+
+## Documentation
+- Use OpenAPI documentation features
+- Document all API endpoints thoroughly
+- Provide example requests and responses
+- Document AI service integration points
+- Maintain API changelog
+- Document deployment procedures

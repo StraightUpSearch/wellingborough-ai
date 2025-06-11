@@ -1,0 +1,118 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Wellingborough.ai Local Business Platform
+
+## Business Profile Management
+- Implement comprehensive business profile creation flows
+- Support multiple business categories and subcategories
+- Handle business verification status and badges
+- Implement photo gallery management for businesses
+- Support business hours with timezone handling
+- Manage contact information with validation
+
+## Local SEO Optimization
+- Generate location-specific meta tags for business pages
+- Implement structured data for local businesses
+- Create location-based sitemaps
+- Optimize for "near me" searches
+- Implement proper canonical URLs for location pages
+- Use local keywords in content generation
+
+## AI Content Generation
+- Generate compelling business descriptions
+- Create SEO-optimized content for business profiles
+- Generate social media content for businesses
+- Create location-specific marketing copy
+- Generate review response templates
+- Implement content quality scoring
+
+## Search and Discovery
+- Implement radius-based business search
+- Support category and tag filtering
+- Implement business recommendation algorithms
+- Create trending business discovery features
+- Support voice search optimization
+- Implement advanced search filters
+
+## User Experience Patterns
+- Design mobile-first responsive interfaces
+- Implement progressive loading for business listings
+- Create intuitive business profile layouts
+- Design effective call-to-action elements
+- Implement smooth navigation between business pages
+- Support offline browsing capabilities
+
+## Performance for Local Users
+- Optimize for mobile data constraints
+- Implement aggressive caching for business data
+- Use lazy loading for business images
+- Optimize map loading and interaction
+- Implement proper image optimization
+- Monitor Core Web Vitals for local users
+
+## Geolocation Features
+- Implement accurate business mapping
+- Support GPS-based business discovery
+- Handle location permissions gracefully
+- Implement driving directions integration
+- Support location-based notifications
+- Handle location accuracy and validation
+
+## Business Communication
+- Implement business inquiry forms
+- Support click-to-call functionality
+- Create business messaging systems
+- Implement review and rating features
+- Support business response management
+- Create notification systems for businesses
+
+## Analytics and Insights
+- Track business profile views and engagement
+- Monitor search patterns and trends
+- Implement business performance dashboards
+- Track user interaction patterns
+- Monitor local market trends
+- Generate business insights reports
+
+## Integration Requirements
+- Google My Business API integration
+- Social media platform integrations
+- Payment processing integration
+- Email marketing service integration
+- SMS notification service integration
+- Analytics platform integration
+
+## Accessibility for Local Community
+- Support multiple languages if needed
+- Implement clear navigation for all users
+- Ensure keyboard accessibility
+- Support screen reader compatibility
+- Use high contrast design elements
+- Implement clear error messaging
+
+## Security and Privacy
+- Protect business contact information
+- Implement secure business verification
+- Handle customer data privacy
+- Secure payment information processing
+- Implement proper authentication flows
+- Monitor for spam and fake businesses
+
+## Local Market Considerations
+- Understand Wellingborough business landscape
+- Support local business categories
+- Implement UK-specific business validations
+- Support British English spelling and terminology
+- Handle UK business hours and holidays
+- Implement UK postal code validation
+
+## Competitive Advantages
+- Focus on AI-powered content generation
+- Implement superior local search algorithms
+- Create unique business discovery features
+- Provide comprehensive business analytics
+- Offer integrated marketing tools
+- Support community-driven business reviews

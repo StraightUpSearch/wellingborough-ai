@@ -1,0 +1,78 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Git Workflow Best Practices
+
+## Branch Strategy
+- Use feature branches for all new development
+- Keep main branch always deployable
+- Use conventional branch naming (feature/, bugfix/, hotfix/)
+- Delete branches after merging
+- Use short-lived feature branches
+- Implement proper branch protection rules
+
+## Commit Messages
+- Use conventional commit format (feat:, fix:, docs:, etc.)
+- Write clear, descriptive commit messages
+- Limit first line to 50 characters
+- Use imperative mood in commit messages
+- Reference issues and PRs in commits
+- Group related changes in single commits
+
+## Pull Request Process
+- Create focused, single-purpose PRs
+- Write descriptive PR titles and descriptions
+- Include screenshots for UI changes
+- Link related issues in PR description
+- Request appropriate reviewers
+- Respond to review feedback promptly
+
+## Code Review Guidelines
+- Review for code quality and best practices
+- Check for proper testing coverage
+- Verify accessibility requirements
+- Ensure proper error handling
+- Check for performance implications
+- Verify security considerations
+
+## Local Development
+- Keep local branches clean and up-to-date
+- Use proper .gitignore configurations
+- Avoid committing sensitive information
+- Use meaningful local branch names
+- Rebase feature branches before merging
+- Squash commits when appropriate
+
+## Release Management
+- Tag releases with semantic versioning
+- Maintain detailed changelogs
+- Use release branches for preparing releases
+- Document breaking changes clearly
+- Test releases thoroughly before deployment
+- Communicate releases to team
+
+## Wellingborough.ai Specific
+- Prefix business-related commits with 'business:'
+- Prefix AI-related commits with 'ai:'
+- Prefix SEO-related commits with 'seo:'
+- Include performance impact notes for large changes
+- Document database migrations in PR descriptions
+- Test local business features thoroughly
+
+## Emergency Procedures
+- Use hotfix branches for critical fixes
+- Fast-track review process for security fixes
+- Document incident response in commits
+- Communicate emergency deployments
+- Follow up with post-mortem analysis
+- Update runbooks based on incidents
+
+## Collaboration Standards
+- Sync with team before major architectural changes
+- Use draft PRs for work-in-progress
+- Provide context for complex changes
+- Share knowledge through code comments
+- Mentor team members through code reviews
+- Maintain team coding standards consistency

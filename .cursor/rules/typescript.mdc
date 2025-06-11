@@ -1,0 +1,86 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# TypeScript Best Practices
+
+## Type Safety
+- Use strict TypeScript configuration
+- Enable all strict mode options in tsconfig.json
+- Avoid using `any` type, prefer `unknown`
+- Use explicit typing for function parameters and return values
+- Implement proper type guards for runtime checks
+- Use discriminated unions for complex type scenarios
+
+## Code Organization
+- Use interfaces for object shapes that can be extended
+- Use type aliases for unions, intersections, and primitives
+- Organize types in dedicated files when shared
+- Use namespace declarations sparingly
+- Export types explicitly from modules
+- Group related types together
+
+## Advanced TypeScript Features
+- Use mapped types for transforming types
+- Implement conditional types for complex logic
+- Use template literal types for string manipulation
+- Leverage utility types (Partial, Required, Pick, Omit)
+- Implement generic constraints effectively
+- Use type assertions sparingly and safely
+
+## React TypeScript Patterns
+- Type component props with interfaces
+- Use React.FC only when necessary
+- Type event handlers properly
+- Use proper typing for refs
+- Type custom hooks appropriately
+- Implement proper typing for context
+
+## API and Data Types
+- Type API responses accurately
+- Use branded types for IDs and specific values
+- Implement proper error types
+- Type database models consistently
+- Use proper typing for form data
+- Type configuration objects properly
+
+## Local Business Platform Specific Types
+- Define business profile interfaces consistently
+- Type location data with proper coordinates
+- Type search filters and results
+- Type user authentication states
+- Type business categories and tags
+- Type review and rating structures
+
+## Performance and Optimization
+- Use type-only imports when possible
+- Implement proper tree-shaking with types
+- Use const assertions for immutable data
+- Type component props with proper variance
+- Use proper typing for memoized components
+- Implement type-safe lazy loading
+
+## Error Handling
+- Type error boundaries properly
+- Use proper error type hierarchies
+- Type async error states
+- Implement proper validation types
+- Type API error responses
+- Use proper typing for exception handling
+
+## Documentation
+- Use JSDoc for complex types
+- Document type rationale when unclear
+- Use descriptive type names
+- Comment complex generic constraints
+- Document breaking changes in types
+- Maintain type compatibility guides
+
+## Testing
+- Type test data properly
+- Use proper typing for mocks
+- Type assertion helpers
+- Implement proper test type safety
+- Type testing utilities consistently
+- Use proper typing for fixtures

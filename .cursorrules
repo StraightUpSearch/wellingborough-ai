@@ -1,0 +1,162 @@
+# Wellingborough.ai Cursor Rules Configuration
+
+You are an AI assistant specialized in developing the Wellingborough.ai local business platform. This is a Next.js 14 application with TypeScript, Tailwind CSS, and AI-powered content generation capabilities.
+
+## Project Overview
+Wellingborough.ai is a hyper-local business platform focused on:
+- AI-enhanced business directory and discovery
+- Local SEO optimization for businesses
+- Automated content generation for business profiles
+- Geographic search and location-based services
+- Community-driven business reviews and recommendations
+
+## Technology Stack
+- **Frontend**: Next.js 14 with App Router, React 18, TypeScript
+- **Styling**: Tailwind CSS with responsive design patterns
+- **Database**: PostgreSQL with Prisma ORM
+- **AI Services**: FastAPI backend for content generation
+- **Authentication**: NextAuth.js with multiple providers
+- **Maps**: Google Maps integration for location services
+- **Deployment**: Vercel for frontend, separate backend hosting
+
+## Core Development Principles
+
+### 1. Local Business Focus
+- Prioritize features that serve local Wellingborough businesses
+- Optimize for mobile-first local users
+- Implement UK-specific business validation and formatting
+- Support local search patterns and user behavior
+
+### 2. AI-Powered Enhancement
+- Use AI for business description generation
+- Implement intelligent content optimization
+- Provide automated SEO recommendations
+- Generate location-specific marketing content
+
+### 3. Performance & SEO
+- Optimize for Core Web Vitals
+- Implement local SEO best practices
+- Use structured data for business listings
+- Ensure fast loading for mobile users with limited data
+
+### 4. Progressive Enhancement
+- Build features that work without JavaScript
+- Implement proper loading and error states
+- Use progressive web app features
+- Support offline browsing capabilities
+
+## File Structure Patterns
+```
+src/
+├── app/                    # Next.js App Router pages
+├── components/             # Reusable UI components
+│   ├── ui/                # Basic UI components (shadcn/ui)
+│   ├── business/          # Business-specific components
+│   └── layout/            # Layout components
+├── lib/                   # Utility functions and configurations
+│   ├── ai/                # AI service integrations
+│   ├── db/                # Database utilities
+│   └── validators/        # Form and data validation
+├── types/                 # TypeScript type definitions
+└── styles/               # Global styles and Tailwind extensions
+```
+
+## Code Quality Standards
+
+### TypeScript
+- Use strict mode configuration
+- Implement proper type safety for all business data
+- Type API responses and database models explicitly
+- Use discriminated unions for complex business logic
+
+### React Components
+- Use Server Components by default
+- Mark Client Components explicitly with 'use client'
+- Implement proper loading and error boundaries
+- Use Suspense for progressive loading
+
+### Styling
+- Use Tailwind utility classes exclusively
+- Implement mobile-first responsive design
+- Follow consistent spacing and typography patterns
+- Use semantic color naming for business categories
+
+### Database
+- Design for geographic search performance
+- Implement proper indexing for business queries
+- Use transactions for related business operations
+- Validate business data at database level
+
+## Development Workflow
+
+### Branch Strategy
+- Use feature branches for all development
+- Prefix branches: `feature/`, `business/`, `ai/`, `seo/`
+- Keep main branch always deployable
+- Use conventional commit messages
+
+### Testing Strategy
+- Write unit tests for business logic
+- Test AI integration points thoroughly
+- Implement integration tests for search functionality
+- Test geolocation features across devices
+
+### Performance Monitoring
+- Monitor Core Web Vitals for local users
+- Track business search performance
+- Monitor AI service response times
+- Implement proper error tracking
+
+## AI Integration Guidelines
+
+### Content Generation
+- Validate business data before AI processing
+- Use structured prompts for consistent output
+- Implement content quality scoring
+- Cache generated content appropriately
+
+### Error Handling
+- Handle AI service timeouts gracefully
+- Provide fallback content for AI failures
+- Implement proper retry mechanisms
+- Log AI operations for debugging
+
+## Local Business Considerations
+
+### UK Market Specifics
+- Use British English spelling and terminology
+- Implement UK postal code validation
+- Support UK business categories and regulations
+- Handle British business hours and holidays
+
+### Wellingborough Focus
+- Understand local business landscape
+- Support community-driven content
+- Implement local event integration
+- Focus on hyperlocal discovery features
+
+## Security & Privacy
+- Protect business contact information
+- Implement secure authentication flows
+- Handle user location data responsibly
+- Monitor for spam and fake business listings
+
+## Performance Targets
+- First Contentful Paint: < 1.5s
+- Largest Contentful Paint: < 2.5s
+- Cumulative Layout Shift: < 0.1
+- Search results: < 500ms response time
+- Business profile load: < 1s
+
+## Quick Reference
+For specific implementation guidance, refer to:
+- `.cursor/rules/nextjs.mdc` - Next.js patterns and App Router
+- `.cursor/rules/react.mdc` - React component best practices
+- `.cursor/rules/typescript.mdc` - TypeScript patterns and type safety
+- `.cursor/rules/tailwind.mdc` - Styling and responsive design
+- `.cursor/rules/fastapi.mdc` - AI backend service patterns
+- `.cursor/rules/database.mdc` - Database design and optimization
+- `.cursor/rules/gitflow.mdc` - Git workflow and collaboration
+- `.cursor/rules/wellingborough-local-business.mdc` - Platform-specific patterns
+
+Always prioritize user experience for local business owners and customers, ensuring the platform is accessible, fast, and valuable for the Wellingborough community. 
