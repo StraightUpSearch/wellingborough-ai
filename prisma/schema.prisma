@@ -1,0 +1,347 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  password      String
+  avatar        String?
+  image         String?   // For NextAuth compatibility
+  bio           String?
+  phone         String?
+  location      String?
+  isBusinessOwner Boolean @default(false)
+  role          String    @default("USER")
+  
+  // Account status
+  isActive      Boolean   @default(true)
+  lastLoginAt   DateTime?
+  
+  // Preferences
+  newsletterSubscribed Boolean @default(true)
+  notificationsEnabled Boolean @default(true)
+  marketingOptIn      Boolean @default(false)
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // NextAuth.js relations
+  accounts      Account[]
+  sessions      Session[]
+
+  // Relations
+  businesses    Business[]
+  events        Event[]
+  reviews       Review[]
+  forumPosts    ForumPost[]
+  forumComments ForumComment[]
+
+  @@map("users")
+  @@index([email])
+  @@index([isBusinessOwner])
+}
+
+// NextAuth.js required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Business {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  shortDescription String?
+  category    String
+  subcategory String?
+  address     String
+  addressLine2 String?
+  city        String   @default("Wellingborough")
+  postcode    String?
+  county      String   @default("Northamptonshire")
+  country     String   @default("United Kingdom")
+  phone       String?
+  email       String?
+  website     String?
+  
+  // Business Images
+  logo        String?
+  coverImage  String?
+  images      String?  // JSON string of image URLs
+  
+  // Business Details
+  openingHours String?  // JSON string of structured opening hours
+  services    String?   // JSON string of services offered
+  specialties String?   // JSON string of specialties
+  yearEstablished Int?
+  numberOfEmployees String? // "1-5", "6-10", "11-50", etc.
+  
+  // Status and Verification
+  status      String @default("DRAFT")
+  featured    Boolean  @default(false)
+  verified    Boolean  @default(false)
+  verificationDate DateTime?
+  claimedAt   DateTime? // When business owner claimed the listing
+  
+  // Performance Metrics
+  rating      Float    @default(0)
+  reviewCount Int      @default(0)
+  viewCount   Int      @default(0)
+  clickCount  Int      @default(0)
+  
+  // Location Data
+  latitude    Float?
+  longitude   Float?
+  
+  // Business Attributes
+  accessibility String?  // JSON string of accessibility features
+  paymentMethods String? // JSON string of accepted payment methods
+  languages   String?    // JSON string of languages spoken
+  priceRange  String?
+  
+  // Social Media
+  facebookUrl String?
+  twitterUrl  String?
+  instagramUrl String?
+  linkedinUrl String?
+  
+  // SEO and AI
+  metaTitle   String?
+  metaDescription String?
+  keywords    String? // JSON string of SEO keywords
+  aiGenerated Boolean  @default(false) // If description was AI generated
+  lastAiUpdate DateTime? // Last time AI updated content
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId     String
+  reviews     Review[]
+  events      Event[]
+  campaigns   LeafletCampaign[]
+  analytics   BusinessAnalytics[]
+
+  @@map("businesses")
+  @@index([category])
+  @@index([city])
+  @@index([postcode])
+  @@index([rating])
+  @@index([featured])
+  @@index([verified])
+  @@index([status])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  location    String
+  address     String?
+  startDate   DateTime
+  endDate     DateTime?
+  image       String?
+  price       Float?
+  category    String
+  featured    Boolean  @default(false)
+  attendeeCount Int    @default(0)
+  maxAttendees  Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  organizer   User?     @relation(fields: [organizerId], references: [id])
+  organizerId String?
+  business    Business? @relation(fields: [businessId], references: [id])
+  businessId  String?
+
+  @@map("events")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int
+  comment   String?
+  helpful   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  business   Business @relation(fields: [businessId], references: [id])
+  businessId String
+
+  @@unique([userId, businessId])
+  @@map("reviews")
+}
+
+model ForumPost {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  category  String
+  pinned    Boolean  @default(false)
+  locked    Boolean  @default(false)
+  views     Int      @default(0)
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  author   User           @relation(fields: [authorId], references: [id])
+  authorId String
+  comments ForumComment[]
+
+  @@map("forum_posts")
+}
+
+model ForumComment {
+  id        String   @id @default(cuid())
+  content   String
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  author   User      @relation(fields: [authorId], references: [id])
+  authorId String
+  post     ForumPost @relation(fields: [postId], references: [id])
+  postId   String
+
+  @@map("forum_comments")
+}
+
+model LeafletCampaign {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  status      String @default("DRAFT")
+  
+  // Campaign Details
+  targetAreas String? // JSON string of postcode areas to target
+  budget      Float?
+  quantity    Int      // Number of leaflets to distribute
+  
+  // Design and Content
+  designTemplate String?
+  customDesign Boolean @default(false)
+  headline    String?
+  content     String?
+  images      String? // JSON string of campaign images
+  
+  // Distribution
+  distributionDate DateTime?
+  distributionMethod String? // "door-to-door", "high-street", etc.
+  distributorNotes String?
+  
+  // Performance
+  delivered   Int      @default(0)
+  responses   Int      @default(0)
+  clicks      Int      @default(0)
+  conversions Int      @default(0)
+  cost        Float    @default(0)
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  businessId  String
+
+  @@map("leaflet_campaigns")
+  @@index([status])
+  @@index([distributionDate])
+}
+
+model BusinessAnalytics {
+  id          String   @id @default(cuid())
+  date        DateTime
+  
+  // View metrics
+  profileViews Int     @default(0)
+  photoViews  Int     @default(0)
+  contactClicks Int   @default(0)
+  websiteClicks Int   @default(0)
+  phoneClicks Int     @default(0)
+  directionClicks Int @default(0)
+  
+  // Search metrics
+  searchImpressions Int @default(0)
+  searchClicks     Int @default(0)
+  searchPosition   Float?
+  
+  // Review metrics
+  newReviews      Int @default(0)
+  totalReviews    Int @default(0)
+  averageRating   Float?
+  
+  // Social metrics
+  socialShares    Int @default(0)
+  socialClicks    Int @default(0)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  business        Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  businessId      String
+
+  @@unique([businessId, date])
+  @@map("business_analytics")
+  @@index([date])
+}
+
+// Campaign Status Values: DRAFT, PENDING_APPROVAL, APPROVED, IN_DISTRIBUTION, COMPLETED, CANCELLED
+// Business Status Values: DRAFT, PENDING_REVIEW, ACTIVE, SUSPENDED, CLOSED
+// User Role Values: USER, BUSINESS_OWNER, MODERATOR, ADMIN
+// Price Range Values: BUDGET, MODERATE, EXPENSIVE, LUXURY 
