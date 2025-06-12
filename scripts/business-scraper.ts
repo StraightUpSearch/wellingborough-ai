@@ -308,9 +308,23 @@ export class BusinessScraper {
         $(selector).each((index, element) => {
           const $element = $(element);
           const businessInfo = this.parseBusinessElement($element);
-          if (businessInfo.name) {
+          if (businessInfo.name && businessInfo.category && businessInfo.address) {
             businesses.push({
-              ...businessInfo,
+              name: businessInfo.name,
+              description: businessInfo.description,
+              category: businessInfo.category,
+              subcategory: businessInfo.subcategory,
+              address: businessInfo.address,
+              addressLine2: businessInfo.addressLine2,
+              postcode: businessInfo.postcode,
+              phone: businessInfo.phone,
+              email: businessInfo.email,
+              website: businessInfo.website,
+              openingHours: businessInfo.openingHours,
+              services: businessInfo.services,
+              specialties: businessInfo.specialties,
+              latitude: businessInfo.latitude,
+              longitude: businessInfo.longitude,
               source: 'LiveLocalAds',
               sourceUrl: url
             });
@@ -338,9 +352,23 @@ export class BusinessScraper {
       $('tr, .business-listing, .company-listing, .directory-entry').each((index, element) => {
         const $element = $(element);
         const businessInfo = this.parseBusinessElement($element);
-        if (businessInfo.name && !businessInfo.name.includes('Company Name')) {
+        if (businessInfo.name && businessInfo.category && businessInfo.address && !businessInfo.name.includes('Company Name')) {
           businesses.push({
-            ...businessInfo,
+            name: businessInfo.name,
+            description: businessInfo.description,
+            category: businessInfo.category,
+            subcategory: businessInfo.subcategory,
+            address: businessInfo.address,
+            addressLine2: businessInfo.addressLine2,
+            postcode: businessInfo.postcode,
+            phone: businessInfo.phone,
+            email: businessInfo.email,
+            website: businessInfo.website,
+            openingHours: businessInfo.openingHours,
+            services: businessInfo.services,
+            specialties: businessInfo.specialties,
+            latitude: businessInfo.latitude,
+            longitude: businessInfo.longitude,
             source: 'Business Magnet',
             sourceUrl: url
           });
@@ -366,9 +394,23 @@ export class BusinessScraper {
       $('.listing, .business-entry, .directory-item, .business-info').each((index, element) => {
         const $element = $(element);
         const businessInfo = this.parseBusinessElement($element);
-        if (businessInfo.name) {
+        if (businessInfo.name && businessInfo.category && businessInfo.address) {
           businesses.push({
-            ...businessInfo,
+            name: businessInfo.name,
+            description: businessInfo.description,
+            category: businessInfo.category,
+            subcategory: businessInfo.subcategory,
+            address: businessInfo.address,
+            addressLine2: businessInfo.addressLine2,
+            postcode: businessInfo.postcode,
+            phone: businessInfo.phone,
+            email: businessInfo.email,
+            website: businessInfo.website,
+            openingHours: businessInfo.openingHours,
+            services: businessInfo.services,
+            specialties: businessInfo.specialties,
+            latitude: businessInfo.latitude,
+            longitude: businessInfo.longitude,
             source: 'Northampton.co.uk',
             sourceUrl: url
           });
@@ -394,7 +436,7 @@ export class BusinessScraper {
     
     if (!name) {
       // Try to extract from text patterns
-      const lines = text.split('\n').filter(line => line.trim().length > 3);
+      const lines = text.split('\n').filter((line: string) => line.trim().length > 3);
       name = lines[0]?.trim() || '';
     }
     

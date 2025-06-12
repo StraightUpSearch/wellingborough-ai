@@ -32,7 +32,6 @@ export class AIContentEnhancer {
       where: {
         OR: [
           { aiGenerated: false },
-          { aiGenerated: null },
           { description: null },
           { description: { equals: '' } }
         ]
